@@ -387,6 +387,44 @@ img { max-width: 100%; display: block; }
 .work__title { font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; }
 .work__desc { margin-top: 12px; color: var(--muted); font-size: 15.5px; max-width: 58ch; }
 
+/* 已上架徽章：比「开发中」更亮一档 */
+.badge--live {
+  border-color: rgba(94, 234, 212, .55);
+  background: rgba(94, 234, 212, .18);
+  color: #bff8ee;
+  font-weight: 600;
+}
+
+/* 玩法标签 */
+.work__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-xs);
+  margin-top: 16px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+/* 作品区行动按钮 */
+.work__actions { margin-top: 20px; }
+
+/* 外链箭头 */
+.btn__ext,
+.link-chip .btn__ext {
+  font-size: 13px;
+  opacity: .85;
+  line-height: 1;
+}
+
 .work__aside {
   width: 108px;
   height: 108px;
@@ -430,6 +468,46 @@ img { max-width: 100%; display: block; }
 .contact__mail a:hover { border-color: var(--accent); }
 
 .contact__note { color: var(--muted-dim); font-size: 14px; }
+
+/* ---------- 联系区外链卡片 ---------- */
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm);
+  justify-content: center;
+  margin-top: var(--gap-lg);
+}
+
+.link-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  text-decoration: none;
+  font-size: 14.5px;
+  transition: transform var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+
+.link-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hot);
+  background: rgba(255, 255, 255, .06);
+}
+
+.link-chip__label {
+  padding: 2px 9px;
+  border-radius: var(--r-pill);
+  background: rgba(94, 234, 212, .14);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.link-chip__value { color: var(--text); }
 
 /* ---------- 页脚 ---------- */
 .site-footer {
@@ -519,10 +597,14 @@ img { max-width: 100%; display: block; }
       <p class="eyebrow reveal">独立游戏工作室</p>
       <h1 class="hero__title reveal">青语的工作室</h1>
       <p class="hero__lead reveal">
-        我们把那些没说出口的念头，<br class="br-mobile" />做成可以上手玩的故事。
+        首款作品《鲸鱼娘来咯~》已在 TapTap 上架。<br class="br-mobile" />
+        我们继续把它做得更好玩一点。
       </p>
       <div class="hero__actions reveal">
-        <a class="btn btn--primary" href="#works">看看作品</a>
+        <a class="btn btn--primary" href="https://www.taptap.cn/app/1019990" target="_blank" rel="noopener noreferrer">
+          去 TapTap 玩
+          <span class="btn__ext" aria-hidden="true">&#8599;</span>
+        </a>
         <a class="btn btn--ghost" href="#contact">联系我们</a>
       </div>
     </div>
@@ -542,8 +624,8 @@ img { max-width: 100%; display: block; }
         <article class="card reveal">
           <h3 class="card__title">我们在做什么</h3>
           <p class="card__body">
-            首款作品《鲸鱼娘来咯~》正在开发中。玩法的骨架和美术的方向在同步推进，
-            等它足够好玩了，再拿出来见人。
+            首款作品《鲸鱼娘来咯~》已经在 TapTap 上架。现在一边做后续内容，
+            一边根据玩家反馈调整手感和节奏。
           </p>
         </article>
 
@@ -573,21 +655,33 @@ img { max-width: 100%; display: block; }
         <p class="section__lead">做出来的东西会放在这里，做不出来的不会。</p>
       </header>
 
-      <!-- TODO: 游戏类型定下来后，把「玩法待公布」换成真实类型，并补一句玩法说明 -->
+      <!-- 已上架 TapTap。游戏介绍、标签取自 https://www.taptap.cn/app/1019990 -->
       <article class="work reveal">
         <div class="work__body">
           <div class="work__meta">
-            <span class="badge">开发中</span>
+            <span class="badge badge--live">已上架</span>
             <span class="work__hint">首款作品</span>
           </div>
           <h3 class="work__title">鲸鱼娘来咯~</h3>
           <p class="work__desc">
-            我们的首款作品，还在打磨。核心玩法已经能跑通一版，剩下的时间花在手感和节奏上。
-            上线之前，这里会补上玩法介绍、画面截图和发售信息。
+            竖屏单手自动射击小游戏。你操控鲸鱼娘防火墙管理员，在紫蓝赛博战场中左右拖动，
+            武器会自动向最近的病毒开火。看看谁能让病毒少吃一点 tok，让大肥鱼多吃一点白米饭。
           </p>
+          <div class="work__tags">
+            <span class="tag">竖屏</span>
+            <span class="tag">单手操作</span>
+            <span class="tag">自动射击</span>
+            <span class="tag">休闲</span>
+          </div>
+          <div class="work__actions">
+            <a class="btn btn--primary" href="https://www.taptap.cn/app/1019990" target="_blank" rel="noopener noreferrer">
+              在 TapTap 上查看
+              <span class="btn__ext" aria-hidden="true">&#8599;</span>
+            </a>
+          </div>
         </div>
         <div class="work__aside" aria-hidden="true">
-          <span class="work__glyph">?</span>
+          <span class="work__glyph">鲸</span>
         </div>
       </article>
     </div>
@@ -606,6 +700,14 @@ img { max-width: 100%; display: block; }
         <a href="mailto:3281706578@qq.com">3281706578@qq.com</a>
       </p>
       <p class="contact__note reveal">通常两三个工作日内回复。</p>
+
+      <div class="contact__links reveal">
+        <a class="link-chip" href="https://www.taptap.cn/app/1019990" target="_blank" rel="noopener noreferrer">
+          <span class="link-chip__label">TapTap</span>
+          <span class="link-chip__value">鲸鱼娘来咯~ 游戏页</span>
+          <span class="btn__ext" aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
     </div>
   </section>
 
